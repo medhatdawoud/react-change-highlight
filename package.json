@@ -1,7 +1,7 @@
 {
   "name": "react-change-highlight",
   "author": "Medhat Dawoud <@med7atdawoud>",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
     "@types/jest": "24.0.18",
     "@types/node": "12.7.8",
