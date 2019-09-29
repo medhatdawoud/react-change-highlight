@@ -11,7 +11,7 @@ const HighlightChange: React.FC<Props> = ({ children }) => {
   let changedElementsList:any = new Set();
 
 
-  const showHighlight = (element:any, showAfter = 500, hideAfter = 1000) => {
+  const showHighlight = (element:any, showAfter = 300, hideAfter = 1500) => {
     setTimeout(() => {
       if (!element.ref.current.className.includes('highlight')) {
         element.ref.current.className += ' highlight';
