@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import HighlightChange from './lib/HighlightChange';
-import './index.scss';
+import './index.css';
 
-export class Example extends Component<{}, {}> {
+export class Example extends Component {
   state = {
     name: '1245',
     text: ''
   };
 
-  ref = React.createRef<HTMLHeadingElement>();
-  ref1 = React.createRef<HTMLHeadingElement>();
-  ref2 = React.createRef<HTMLHeadingElement>();
-  ref3 = React.createRef<HTMLHeadingElement>();
+  ref = React.createRef();
+  ref1 = React.createRef();
+  ref2 = React.createRef();
+  ref3 = React.createRef();
 
-  nameChanged = (e: { target: { value: any } }) => {
+  nameChanged = e => {
     const value = e.target.value;
     this.setState({ name: value });
     setTimeout(() => this.setState({ text: this.state.name }), 0);
