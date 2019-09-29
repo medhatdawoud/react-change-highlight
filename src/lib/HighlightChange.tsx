@@ -3,50 +3,65 @@ import './HighlightChange.scss';
 
 interface Props {
   children: React.ReactElement<any>[];
-  refs: React.Ref<any>[];
 }
 
-const HighlightChange: React.FC<Props> = ({ children, refs }) => {
-  // const [myChildren, setMyChildren] = useState();
+const HighlightChange: React.FC<Props> = ({ children }) => {
+  const [myChildren, setMyChildren] = useState();
+  const [elementsChanged, setElementsChanged] = useState([])
+  let changedElementsList:any = new Set();
+
+
+  const showHighlight = (element:any, showAfter = 500, hideAfter = 1000) => {
+    setTimeout(() => {
+      if (!element.ref.current.className.includes('highlight')) {
+        element.ref.current.className += ' highlight';
+        let classNames = element.ref.current.className;
+
+        setTimeout(() => {
+          element.ref.current.className = classNames.substr(0, classNames.indexOf('highlight'))
+        }, hideAfter);
+      }
+    }, showAfter);
+  }
 
   useEffect(() => {
-    // let firstTime = true;
-    // if (children) {
-    //   if (!myChildren && firstTime) {
-    //     setMyChildren(children);
-    //     firstTime = false;
-    //   } else {
-    //     React.Children.map(children, (newChild: React.ReactElement<any>) => {
-    //       React.Children.map(
-    //         myChildren,
-    //         (oldChild: React.ReactElement<any>) => {
-    //           if (newChild.type === oldChild.type) {
-    //             if (newChild.props.children !== oldChild.props.children) {
-    //               setMyChildren(children);
-    //             }
-    //           }
-    //         }
-    //       );
-    //       return newChild.props.children;
-    //     });
-    //   }
-    // }
-    // return () => {};
+    let firstTime = true;
+    if (children) {
+      if (!myChildren && firstTime) {
+        setMyChildren(children);
+        firstTime = false;
+      } else {
+        React.Children.map(children, (newChild:any) => {
+          React.Children.map(
+            myChildren,
+            (oldChild: any) => {
+              if (newChild.type === oldChild.type) {
+                if (newChild.props.children !== oldChild.props.children) {
+                  setMyChildren(children);
+                  if(newChild.ref) {
+                    changedElementsList.add(newChild);
+                    setElementsChanged(Array.from(changedElementsList));
+                  }
+                }
+              }
+            }
+          );
+          return newChild.props.children;
+        });
+      }
+    }
+    return () => {};
+  }, [children]);
 
-    refs.forEach((ref: any) => {
-      setTimeout(() => {
-        if (!ref.current.className.includes('highlight')) {
-          ref.current.className += ' highlight';
-          let classNames = ref.current.className;
-
-          setTimeout(() => {
-            ref.current.className = classNames.substr(0, classNames.indexOf('highlight'))
-          }, 1500);
-        }
-      }, 500);
-    });
-
-  }, [children, refs]);
+  useEffect(() => {
+    if(elementsChanged) {
+      console.log(elementsChanged);
+      elementsChanged.forEach((element:any) => {
+        showHighlight(element);
+      })
+    }
+    
+  }, [elementsChanged])
 
   return <div>{children}</div>;
 };

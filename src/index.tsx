@@ -10,6 +10,9 @@ export class Example extends Component<{}, {}> {
   };
 
   ref = React.createRef<HTMLHeadingElement>();
+  ref1 = React.createRef<HTMLHeadingElement>();
+  ref2 = React.createRef<HTMLHeadingElement>();
+  ref3 = React.createRef<HTMLHeadingElement>();
 
   nameChanged = (e: { target: { value: any } }) => {
     const value = e.target.value;
@@ -26,11 +29,19 @@ export class Example extends Component<{}, {}> {
           onChange={this.nameChanged}
           value={this.state.name}
         />
-        <HighlightChange refs={[this.ref]}>
+        <HighlightChange>
           <h1 className="bottom-right" ref={this.ref}>
             {this.state.text}
           </h1>
-          <h2>1245</h2>
+          <h1 className="bottom-left" ref={this.ref1}>
+            {this.state.text}
+          </h1>
+          <h1 className="top-right" ref={this.ref2}>
+            {this.state.text}
+          </h1>
+          <h1 className="top-left" ref={this.ref3}>
+            {this.state.text}
+          </h1>
         </HighlightChange>
       </>
     );
