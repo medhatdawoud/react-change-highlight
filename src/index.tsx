@@ -5,7 +5,7 @@ import './index.scss';
 
 export class Example extends Component<{}, {}> {
   state = {
-    name: '',
+    name: '1245',
     text: ''
   };
 
