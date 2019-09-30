@@ -5,7 +5,7 @@ export default ({ children }) => {
   const [myChildren, setMyChildren] = useState();
   let changedElementsList = new Set();
 
-  const showHighlight = (element, showAfter = 300, hideAfter = 1500) => {
+  const showHighlight = (element, showAfter = 100, hideAfter = 1000) => {
     setTimeout(() => {
       if (!element.ref.current.className.includes(highlightClassName)) {
         element.ref.current.className += ' ' + highlightClassName;
