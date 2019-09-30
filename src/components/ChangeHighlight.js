@@ -1,25 +1,24 @@
-import React, {useState, useEffect} from 'react';
-// import './ChangeHighlight.css';
+import React, { useState, useEffect } from 'react';
+import { highlightClassName } from './styles';
 
-export default function ChangeHighlight({children}) {
+export default ({ children }) => {
   const [myChildren, setMyChildren] = useState();
   let changedElementsList = new Set();
 
   const showHighlight = (element, showAfter = 300, hideAfter = 1500) => {
     setTimeout(() => {
-      if (!element.ref.current.className.includes('highlight')) {
-        element.ref.current.className += ' highlight';
+      if (!element.ref.current.className.includes(highlightClassName)) {
+        element.ref.current.className += ' ' + highlightClassName;
         let classNames = element.ref.current.className;
 
         setTimeout(() => {
-          element.ref.current.className = classNames.substr(
-            0,
-            classNames.indexOf('highlight')
-          );
+          element.ref.current.className = classNames
+            .substr(0, classNames.indexOf(highlightClassName))
+            .trim();
         }, hideAfter);
       }
     }, showAfter);
-  }
+  };
 
   useEffect(() => {
     let firstTime = true;
@@ -35,7 +34,7 @@ export default function ChangeHighlight({children}) {
                 setMyChildren(children);
                 if (newChild.ref) {
                   changedElementsList.add(newChild);
-                  (Array.from(changedElementsList)).forEach(element => {
+                  Array.from(changedElementsList).forEach(element => {
                     showHighlight(element);
                   });
                 }
@@ -47,9 +46,7 @@ export default function ChangeHighlight({children}) {
       }
     }
     return () => {};
-  })
+  });
 
-  return (
-    <div>{children}</div>
-  )
-}
+  return <div>{children}</div>;
+};
