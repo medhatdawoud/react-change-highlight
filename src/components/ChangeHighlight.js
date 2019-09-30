@@ -1,20 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 // import './ChangeHighlight.css';
 
-export class ChangeHighlight extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      myChildren: [],
-      elementsChanged: []
-    };
-    this.changedElementsList = new Set();
-  }
+export default function ChangeHighlight({children}) {
+  const [myChildren, setMyChildren] = useState();
+  let changedElementsList = new Set();
 
-  //const [myChildren, setMyChildren] = useState();
-  //const [elementsChanged, setElementsChanged] = useState([]);
-
-  showHighlight(element, showAfter = 300, hideAfter = 1500) {
+  const showHighlight = (element, showAfter = 300, hideAfter = 1500) => {
     setTimeout(() => {
       if (!element.ref.current.className.includes('highlight')) {
         element.ref.current.className += ' highlight';
@@ -30,23 +21,23 @@ export class ChangeHighlight extends React.Component {
     }, showAfter);
   }
 
-  componentDidMount() {
+  useEffect(() => {
     let firstTime = true;
-    const { children } = this.props;
-    const { myChildren } = this.state;
     if (children) {
       if (!myChildren && firstTime) {
-        this.setState({ mychildren: children });
+        setMyChildren(children);
         firstTime = false;
       } else {
         React.Children.map(children, newChild => {
           React.Children.map(myChildren, oldChild => {
             if (newChild.type === oldChild.type) {
               if (newChild.props.children !== oldChild.props.children) {
-                this.setState({ mychildren: children });
+                setMyChildren(children);
                 if (newChild.ref) {
                   changedElementsList.add(newChild);
-                  setElementsChanged(Array.from(changedElementsList));
+                  (Array.from(changedElementsList)).forEach(element => {
+                    showHighlight(element);
+                  });
                 }
               }
             }
@@ -56,18 +47,9 @@ export class ChangeHighlight extends React.Component {
       }
     }
     return () => {};
-  }
+  })
 
-  /*
-  useEffect(() => {
-    if (elementsChanged) {
-      elementsChanged.forEach(element => {
-        showHighlight(element);
-      });
-    }
-  }, [elementsChanged]); */
-
-  render() {
-    return <div>{this.props.children}</div>;
-  }
+  return (
+    <div>{children}</div>
+  )
 }
