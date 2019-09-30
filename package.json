@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "styleguidist server",
+    "test": "echo 'pass'",
     "build": "rollup -c",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "prepublishOnly": "rm -rf build && npm run build",
