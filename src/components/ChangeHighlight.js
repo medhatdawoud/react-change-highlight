@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import './HighlightChange.css';
+import React from 'react';
+// import './ChangeHighlight.css';
 
-class HighlightChange extends Component{
+export class ChangeHighlight extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       myChildren: [],
       elementsChanged: []
-    }
+    };
     this.changedElementsList = new Set();
   }
 
-  
   //const [myChildren, setMyChildren] = useState();
   //const [elementsChanged, setElementsChanged] = useState([]);
 
@@ -29,20 +28,22 @@ class HighlightChange extends Component{
         }, hideAfter);
       }
     }, showAfter);
-  };
+  }
 
   componentDidMount() {
     let firstTime = true;
+    const { children } = this.props;
+    const { myChildren } = this.state;
     if (children) {
       if (!myChildren && firstTime) {
-        setMyChildren(children);
+        this.setState({ mychildren: children });
         firstTime = false;
       } else {
         React.Children.map(children, newChild => {
           React.Children.map(myChildren, oldChild => {
             if (newChild.type === oldChild.type) {
               if (newChild.props.children !== oldChild.props.children) {
-                setMyChildren(children);
+                this.setState({ mychildren: children });
                 if (newChild.ref) {
                   changedElementsList.add(newChild);
                   setElementsChanged(Array.from(changedElementsList));
@@ -55,7 +56,7 @@ class HighlightChange extends Component{
       }
     }
     return () => {};
-  };
+  }
 
   /*
   useEffect(() => {
@@ -67,8 +68,6 @@ class HighlightChange extends Component{
   }, [elementsChanged]); */
 
   render() {
-    return <div>{children}</div>;
-  } 
-};
-
-export default HighlightChange;
+    return <div>{this.props.children}</div>;
+  }
+}
