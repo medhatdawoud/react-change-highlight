@@ -3,7 +3,11 @@ export const highlightClassName = 'react-highlight';
 var styles = `
   .${highlightClassName} {
     background: #f8ffb4;
-    transition: 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .fadeBg {
+    background: transperant;
   }
 `
 

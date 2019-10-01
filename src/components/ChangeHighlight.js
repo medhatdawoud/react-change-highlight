@@ -17,12 +17,17 @@ export default ({
       if (!element.ref.current.className.includes(highlightStyle)) {
         element.ref.current.className += ' ' + highlightStyle;
         let classNames = element.ref.current.className;
+        
+        setTimeout(() => {
+          element.ref.current.className += ' fadeBg';
+        }, 500);
 
         setTimeout(() => {
+          element.ref.current.className += ' ' + highlightStyle;
           element.ref.current.className = classNames
-            .substr(0, classNames.indexOf(highlightStyle))
+            .substr(0, classNames.indexOf(highlightStyle+' fadeBg'))
             .trim();
-        }, hideAfter);
+        }, hideAfter + 500);
       }
     }, showAfter);
   };
