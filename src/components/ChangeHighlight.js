@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { highlightClassName } from './styles';
+import './styles';
 
 export default ({
   children,
@@ -23,7 +24,6 @@ export default ({
         }, 500);
 
         setTimeout(() => {
-          element.ref.current.className += ' ' + highlightStyle;
           element.ref.current.className = classNames
             .substr(0, classNames.indexOf(highlightStyle+' fadeBg'))
             .trim();
