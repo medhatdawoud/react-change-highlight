@@ -3,8 +3,8 @@ import { highlightClassName } from './styles';
 
 export default ({
   children,
-  showAfter = 100,
-  hideAfter = 1000,
+  showAfter = 500,
+  hideAfter = 2500,
   containerClassName = '',
   highlightStyle = highlightClassName,
   disabled = false
@@ -12,7 +12,7 @@ export default ({
   const [myChildren, setMyChildren] = useState();
   let changedElementsList = new Set();
 
-  const showHighlight = (element, showAfter = 100, hideAfter = 1000) => {
+  const showHighlight = (element, showAfter = 500, hideAfter = 2500) => {
     setTimeout(() => {
       if (!element.ref.current.className.includes(highlightStyle)) {
         element.ref.current.className += ' ' + highlightStyle;
