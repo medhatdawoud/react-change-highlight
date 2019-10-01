@@ -18,23 +18,22 @@ export default ({
       if (!element.ref.current.className.includes(highlightStyle)) {
         element.ref.current.className += ' ' + highlightStyle;
         let classNames = element.ref.current.className;
-        
+
         setTimeout(() => {
           element.ref.current.className += ' fadeBg';
-        }, 500);
+        }, hideAfter - 500);
 
         setTimeout(() => {
           element.ref.current.className = classNames
-            .substr(0, classNames.indexOf(highlightStyle+' fadeBg'))
+            .substr(0, classNames.indexOf(highlightStyle))
             .trim();
-        }, hideAfter + 500);
+        }, hideAfter);
       }
     }, showAfter);
   };
 
   useEffect(() => {
-    if(disabled)
-      return;
+    if (disabled) return;
 
     let firstTime = true;
     if (children) {
