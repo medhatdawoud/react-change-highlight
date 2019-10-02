@@ -18,8 +18,8 @@
   ],
   "version": "1.0.7-1",
   "peerDependencies": {
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1"
+    "react": "^16.8",
+    "react-dom": "^16.8"
   },
   "scripts": {
     "start": "styleguidist server",
