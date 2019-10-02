@@ -4,12 +4,18 @@
     "name": "Medhat Dawoud",
     "email": "medhatdawoud@gmail.com"
   },
-  "keywords": ["ux", "react-highlight", "react-change", "highlight", "change-highlight"],
+  "keywords": [
+    "ux",
+    "react-highlight",
+    "react-change",
+    "highlight",
+    "change-highlight"
+  ],
   "main": "build/index.js",
   "files": [
     "/build"
   ],
-  "version": "1.0.6",
+  "version": "1.0.7-0",
   "peerDependencies": {
     "react": "^16.10.1",
     "react-dom": "^16.10.1"
