@@ -20,9 +20,11 @@ import ChangeHighlight from 'react-change-highlight';
 export default () => {
   const [count, setCount] = useState(0);
 
-  <ChangeHighlight>
-    <div ref={React.createRef()}>{count}</div>
-  </ChangeHighlight>
+  return (
+    <ChangeHighlight>
+      <div ref={React.createRef()}>{count}</div>
+    </ChangeHighlight>
+  );
 }
 ```
 
@@ -37,14 +39,14 @@ Default styling for highlighting in case the user didn't use a custom styling us
 ## Props
 |Property|Description|Type|Default|
 |--|--|--|--|
-|`showAfter`|number of milli seconds before start highlighting|number|500|
-|`hideAfter`|number of milli seconds before ending highlighting|number|2500|
-|`containerClassName`|className for component container|string||
-|`highlightStyle`|className for highlighing content|string||
-|`disabled`|weather you need to disable highlighting|boolean|false|
+|`showAfter`|number|500|number of milli seconds before start highlighting|
+|`hideAfter`|number|2500|number of milli seconds before ending highlighting|
+|`containerClassName`|string||className for component container|
+|`highlightStyle`|string||className for highlighing content|
+|`disabled`|boolean|false|weather you need to disable highlighting|
 ---
 
 ## Author
-- _Medhat Dawoud_
+- Medhat Dawoud
 - Website: [medhatdawoud.net](http://medhatdawoud.net)
 - Twitter: [@med7atdawoud](http://twitter.com/med7atdawoud)
