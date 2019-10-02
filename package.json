@@ -1,5 +1,6 @@
 {
   "name": "react-change-highlight",
+  "description": "React component to highlight the changed content immediately and bring focus of the user into the changed part",
   "author": {
     "name": "Medhat Dawoud",
     "email": "medhatdawoud@gmail.com"
