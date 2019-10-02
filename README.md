@@ -1,6 +1,9 @@
 # react-change-highlight
 > React component to highlight changes in the wrapped component to enhance the UX and grap the focus of the user into the changed value of some parts like the cart in an e-commerce application for example.
 
+You can play around with it on this sandbox [codesandbox.io/react-change-highlight](https://codesandbox.io/embed/vigorous-benz-fcwh9)
+
+
 ## Install
 ```
 yarn add react-change-highlight
