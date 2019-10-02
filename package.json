@@ -4,6 +4,7 @@
     "name": "Medhat Dawoud",
     "email": "medhatdawoud@gmail.com"
   },
+  "keywords": ["ux", "react-highlight", "react-change", "highlight", "change-highlight"],
   "main": "build/index.js",
   "files": [
     "/build"
