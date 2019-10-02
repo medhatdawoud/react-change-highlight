@@ -1,10 +1,10 @@
 # react-change-highlight
 > React Change Highlight is a react component to highlight changes in the wrapped component to enhance the UX and grap the focus of the user into the changed value of some parts like the cart in an e-commerce application for example.
 
-You can play around with it on this sandbox [codesandbox.io/react-change-highlight](https://codesandbox.io/embed/vigorous-benz-fcwh9)
-
-and this is a real use case we are using in our company
+This is a real use case we are using in our company
 ![UseCase](https://i.imgur.com/vHxyHrN.gif)
+
+You can play around with it on this sandbox [codesandbox.io/react-change-highlight](https://codesandbox.io/embed/vigorous-benz-fcwh9)
 
 ## Install
 ```
@@ -42,7 +42,7 @@ Default styling for highlighting in case the user didn't use a custom styling us
 ```
 
 ## Props
-|Property|Description|Type|Default|
+|Property|Type|Default|Description|
 |--|--|--|--|
 |`showAfter`|number|500|number of milli seconds before start highlighting|
 |`hideAfter`|number|2500|number of milli seconds before ending highlighting|
