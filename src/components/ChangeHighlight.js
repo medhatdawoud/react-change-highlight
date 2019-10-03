@@ -48,9 +48,7 @@ export default ({
                 setMyChildren(children);
                 if (newChild.ref) {
                   changedElementsList.add(newChild);
-                  Array.from(changedElementsList).forEach(element => {
-                    showHighlight(element, showAfter, hideAfter);
-                  });
+                  showHighlight(newChild, showAfter, hideAfter);
                 }
               }
             }
