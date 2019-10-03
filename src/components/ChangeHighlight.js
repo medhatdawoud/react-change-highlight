@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { highlightClassName } from './styles';
 import './styles';
+import { maxHeaderSize } from 'http';
 
 export default ({
   children,
@@ -12,6 +13,7 @@ export default ({
 }) => {
   const [newChildren, setNewChildren] = useState();
   const isInitialMount = useRef(true);
+  let listOfHighlightedElements = [];
 
   const showHighlight = (
     element,
@@ -27,15 +29,31 @@ export default ({
       setTimeout(() => {
         element.ref.current.className += ' ' + highlightStyle;
 
-        setTimeout(() => {
-          element.ref.current.className = classNames;
-        }, hideAfter);
+        listOfHighlightedElements.push({ element, hideAfter });
+        hideHighlight();
       }, showAfter);
     } else {
       element.ref.current.className =
         classNames.indexOf(highlightStyle) &&
         classNames.substr(0, classNames.indexOf(highlightStyle)).trim();
       showHighlight(element, showAfter, hideAfter);
+    }
+  };
+
+  const hideHighlight = () => {
+    let length = listOfHighlightedElements.length;
+    if (length) {
+      const { element, hideAfter } = listOfHighlightedElements[length - 1];
+      setTimeout(() => {
+        let classNames = element.ref.current.className;
+        if (classNames.indexOf(highlightStyle) > -1) {
+          element.ref.current.className = classNames
+            .substr(0, classNames.indexOf(highlightStyle))
+            .trim();
+        }
+        listOfHighlightedElements.pop();
+        hideHighlight();
+      }, hideAfter);
     }
   };
 
