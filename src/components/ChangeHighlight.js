@@ -10,7 +10,7 @@ export default ({
   highlightStyle = highlightClassName,
   disabled = false
 }) => {
-  const [myChildren, setMyChildren] = useState();
+  const [newChildren, setNewChildren] = useState();
   const isInitialMount = useRef(true);
 
   const showHighlight = (element, showAfter = showAfter, hideAfter = hideAfter) => {
@@ -28,26 +28,30 @@ export default ({
     }, showAfter);
   };
 
+  const detectChangedChildren = () => {
+    React.Children.map(children, (newChild, index1) => {
+      React.Children.map(newChildren, (oldChild, index2) => {
+        if (index1 === index2) {
+          if (newChild.props.children !== oldChild.props.children) {
+            setNewChildren(children);
+            if (newChild.ref && newChild.props.children) {
+              showHighlight(newChild, showAfter, hideAfter);
+            }
+          }
+        }
+      });
+      return newChild.props.children;
+    });
+  }
+
   useEffect(() => {
     if (disabled) return;
 
     if (isInitialMount.current) {
       isInitialMount.current = false;
-      setMyChildren(children);
+      setNewChildren(children);
     } else {
-      React.Children.map(children, (newChild, index1) => {
-        React.Children.map(myChildren, (oldChild, index2) => {
-          if (index1 === index2) {
-            if (newChild.props.children !== oldChild.props.children) {
-              setMyChildren(children);
-              if (newChild.ref && newChild.props.children) {
-                showHighlight(newChild, showAfter, hideAfter);
-              }
-            }
-          }
-        });
-        return newChild.props.children;
-      });
+      detectChangedChildren(children, newChildren);
     }
   });
 
