@@ -49,6 +49,7 @@ export default ({
                 if (newChild.ref) {
                   changedElementsList.add(newChild);
                   showHighlight(newChild, showAfter, hideAfter);
+                  return;
                 }
               }
             }
