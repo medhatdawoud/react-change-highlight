@@ -5,11 +5,6 @@ var styles = `
     background-color: #f8ffb4;
     transition: all 0.5s ease-in-out;
   }
-
-  .fadeBg {
-    background-color: none;
-    transition: all 0.5s ease-in-out;
-  }
 `;
 
 var styleSheet = document.createElement('style');
