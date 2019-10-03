@@ -13,36 +13,49 @@ export default ({
   const [newChildren, setNewChildren] = useState();
   const isInitialMount = useRef(true);
 
-  const showHighlight = (element, showAfter = showAfter, hideAfter = hideAfter) => {
-    setTimeout(() => {
-      if (!element.ref.current.className.includes(highlightStyle)) {
+  const showHighlight = (
+    element,
+    showAfter = showAfter,
+    hideAfter = hideAfter
+  ) => {
+    let classNames = element.ref.current.className;
+    const isHighlighted = element.ref.current.className.includes(
+      highlightStyle
+    );
+
+    if (!isHighlighted) {
+      setTimeout(() => {
         element.ref.current.className += ' ' + highlightStyle;
-        let classNames = element.ref.current.className;
 
         setTimeout(() => {
-          element.ref.current.className = classNames
-            .substr(0, classNames.indexOf(highlightStyle))
-            .trim();
+          element.ref.current.className = classNames;
         }, hideAfter);
-      }
-    }, showAfter);
+      }, showAfter);
+    } else {
+      element.ref.current.className =
+        classNames.indexOf(highlightStyle) &&
+        classNames.substr(0, classNames.indexOf(highlightStyle)).trim();
+      showHighlight(element, showAfter, hideAfter);
+    }
   };
 
-  const detectChangedChildren = () => {
+  const checkChangedChildren = () => {
     React.Children.map(children, (newChild, index1) => {
       React.Children.map(newChildren, (oldChild, index2) => {
         if (index1 === index2) {
           if (newChild.props.children !== oldChild.props.children) {
             setNewChildren(children);
             if (newChild.ref && newChild.props.children) {
-              showHighlight(newChild, showAfter, hideAfter);
+              let highlightTimer = setTimeout(() => {
+                showHighlight(newChild, showAfter, hideAfter);
+              }, 300);
             }
           }
         }
       });
       return newChild.props.children;
     });
-  }
+  };
 
   useEffect(() => {
     if (disabled) return;
@@ -51,7 +64,7 @@ export default ({
       isInitialMount.current = false;
       setNewChildren(children);
     } else {
-      detectChangedChildren(children, newChildren);
+      checkChangedChildren(children, newChildren);
     }
   });
 
