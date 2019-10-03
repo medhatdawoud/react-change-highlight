@@ -43,7 +43,7 @@ export default ({
   const hideHighlight = () => {
     let length = listOfHighlightedElements.length;
     if (length) {
-      const { element, hideAfter } = listOfHighlightedElements[length - 1];
+      const { element, hideAfter } = listOfHighlightedElements[0];
       setTimeout(() => {
         let classNames = element.ref.current.className;
         if (classNames.indexOf(highlightStyle) > -1) {
@@ -51,7 +51,7 @@ export default ({
             .substr(0, classNames.indexOf(highlightStyle))
             .trim();
         }
-        listOfHighlightedElements.pop();
+        listOfHighlightedElements.shift();
         hideHighlight();
       }, hideAfter);
     }
