@@ -12,8 +12,8 @@ export default ({
   disabled = false
 }) => {
   const [newChildren, setNewChildren] = useState();
+  const [listOfHighlightedElements, setListOfHighlightedElements] = useState([]);
   const isInitialMount = useRef(true);
-  let listOfHighlightedElements = [];
 
   const showHighlight = (
     element,
@@ -28,32 +28,14 @@ export default ({
     if (!isHighlighted) {
       setTimeout(() => {
         element.ref.current.className += ' ' + highlightStyle;
-
-        listOfHighlightedElements.push({ element, hideAfter });
-        hideHighlight();
+        console.log({ element, hideAfter })
+        setListOfHighlightedElements([...listOfHighlightedElements, { element, hideAfter }]);
       }, showAfter);
     } else {
       element.ref.current.className =
         classNames.indexOf(highlightStyle) &&
         classNames.substr(0, classNames.indexOf(highlightStyle)).trim();
       showHighlight(element, showAfter, hideAfter);
-    }
-  };
-
-  const hideHighlight = () => {
-    let length = listOfHighlightedElements.length;
-    if (length) {
-      const { element, hideAfter } = listOfHighlightedElements[0];
-      setTimeout(() => {
-        let classNames = element.ref.current.className;
-        if (classNames.indexOf(highlightStyle) > -1) {
-          element.ref.current.className = classNames
-            .substr(0, classNames.indexOf(highlightStyle))
-            .trim();
-        }
-        listOfHighlightedElements.shift();
-        hideHighlight();
-      }, hideAfter);
     }
   };
 
@@ -85,6 +67,29 @@ export default ({
       checkChangedChildren(children, newChildren);
     }
   });
+
+  useEffect(() => {
+    let length = listOfHighlightedElements.length;
+    console.log(listOfHighlightedElements);
+    if (length) {
+      listOfHighlightedElements.forEach((oneElement) => {
+        const { element, hideAfter, highlighted } = oneElement;
+        if (highlighted) {
+          return;
+        }
+        
+        setTimeout(() => {
+          let classNames = element.ref.current.className;
+          if (classNames.indexOf(highlightStyle) > -1) {
+            element.ref.current.className = classNames
+              .substr(0, classNames.indexOf(highlightStyle))
+              .trim();
+          }
+          oneElement.highlighted = true;
+        }, hideAfter);
+      });
+    }
+  }, [listOfHighlightedElements])
 
   return <div className={containerClassName}>{children}</div>;
 };
