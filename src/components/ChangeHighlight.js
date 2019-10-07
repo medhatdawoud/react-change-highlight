@@ -11,8 +11,10 @@ export default ({
   highlightStyle = highlightClassName,
   disabled = false
 }) => {
-  const [newChildren, setNewChildren] = useState();
-  const [listOfHighlightedElements, setListOfHighlightedElements] = useState([]);
+  const [oldChildren, setOldChildren] = useState();
+  const [listOfHighlightedElements, setListOfHighlightedElements] = useState(
+    []
+  );
   const isInitialMount = useRef(true);
 
   const showHighlight = (
@@ -28,8 +30,10 @@ export default ({
     if (!isHighlighted) {
       setTimeout(() => {
         element.ref.current.className += ' ' + highlightStyle;
-        console.log({ element, hideAfter })
-        setListOfHighlightedElements([...listOfHighlightedElements, { element, hideAfter }]);
+        setListOfHighlightedElements([
+          ...listOfHighlightedElements,
+          { element, hideAfter }
+        ]);
       }, showAfter);
     } else {
       element.ref.current.className =
@@ -39,21 +43,21 @@ export default ({
     }
   };
 
-  const checkChangedChildren = () => {
-    React.Children.map(children, (newChild, index1) => {
-      React.Children.map(newChildren, (oldChild, index2) => {
+  const checkChangedChildren = (children, oldChildren) => {
+    React.Children.map(oldChildren, (oldChild, index1) => {
+      React.Children.map(children, (newChild, index2) => {
         if (index1 === index2) {
-          if (newChild.props.children !== oldChild.props.children) {
-            setNewChildren(children);
-            if (newChild.ref && newChild.props.children) {
-              let highlightTimer = setTimeout(() => {
-                showHighlight(newChild, showAfter, hideAfter);
-              }, 300);
+          if (
+            newChild.ref &&
+            newChild.props.children !== oldChild.props.children
+          ) {
+            setOldChildren(children);
+            if (newChild.props.children) {
+              showHighlight(newChild, showAfter, hideAfter);
             }
           }
         }
       });
-      return newChild.props.children;
     });
   };
 
@@ -62,22 +66,21 @@ export default ({
 
     if (isInitialMount.current) {
       isInitialMount.current = false;
-      setNewChildren(children);
+      setOldChildren(children);
     } else {
-      checkChangedChildren(children, newChildren);
+      checkChangedChildren(children, oldChildren);
     }
   });
 
   useEffect(() => {
     let length = listOfHighlightedElements.length;
-    console.log(listOfHighlightedElements);
     if (length) {
-      listOfHighlightedElements.forEach((oneElement) => {
+      listOfHighlightedElements.forEach(oneElement => {
         const { element, hideAfter, highlighted } = oneElement;
         if (highlighted) {
           return;
         }
-        
+
         setTimeout(() => {
           let classNames = element.ref.current.className;
           if (classNames.indexOf(highlightStyle) > -1) {
@@ -89,7 +92,7 @@ export default ({
         }, hideAfter);
       });
     }
-  }, [listOfHighlightedElements])
+  }, [listOfHighlightedElements]);
 
   return <div className={containerClassName}>{children}</div>;
 };
