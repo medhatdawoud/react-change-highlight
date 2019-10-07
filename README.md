@@ -4,7 +4,7 @@
 This is a real use case we are using in our company
 ![UseCase](https://i.imgur.com/vHxyHrN.gif)
 
-You can play around with it on this sandbox [codesandbox.io/react-change-highlight](https://codesandbox.io/embed/vigorous-benz-fcwh9)
+You can play around with it on this sandbox [codesandbox.io/react-change-highlight](https://codesandbox.io/s/react-change-highlight-example-fcwh9)
 
 ## Install
 ```
