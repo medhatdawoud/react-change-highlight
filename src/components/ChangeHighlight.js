@@ -11,9 +11,7 @@ export default ({
   disabled = false
 }) => {
   const [oldChildren, setOldChildren] = useState();
-  const [listOfHighlightedElements, setListOfHighlightedElements] = useState(
-    []
-  );
+  const [listOfHighlightedElements, setListOfHighlightedElements] = useState([]);
   const isInitialMount = useRef(true);
 
   const showHighlight = (
@@ -22,10 +20,6 @@ export default ({
     hideAfter = hideAfter
   ) => {
     let classNames = element.ref.current.className;
-    setListOfHighlightedElements([
-      ...listOfHighlightedElements,
-      { element, hideAfter }
-    ]);
     const isHighlighted = element.ref.current.className.includes(
       highlightStyle
     );
@@ -42,7 +36,7 @@ export default ({
     }
   };
 
-  const hideHighlight = (element, hideAfter, oneElement) => {
+  const hideHighlight = (element, hideAfter, oneElement) => {    
     setTimeout(() => {
       let classNames = element.ref.current.className;
       if (classNames.indexOf(highlightStyle) > -1) {
@@ -59,10 +53,15 @@ export default ({
       React.Children.forEach(children, (newChild, index2) => {
         if (index1 === index2) {
           if (
-            newChild.ref &&
+            oldChild.ref &&
             newChild.props.children !== oldChild.props.children
           ) {
             if (newChild.props.children) {
+              setListOfHighlightedElements([
+                ...listOfHighlightedElements,
+                { element: newChild, hideAfter }
+              ]);
+
               showHighlight(newChild, showAfter, hideAfter);
             }
             setOldChildren(children);
@@ -83,16 +82,26 @@ export default ({
     }
   });
 
+  const pickNotHighlightedElement = (allChanged, idx = 0) => {
+    let oneElement;
+    if (idx < allChanged.length) {
+      oneElement = listOfHighlightedElements[idx];
+      if (oneElement.highlighted) {
+        pickNotHighlightedElement(allChanged, idx++);
+      }
+    }
+
+    return oneElement;
+  };
+
   useEffect(() => {
     let length = listOfHighlightedElements.length;
     if (length) {
-      let oneElement = listOfHighlightedElements.shift();
-      const { element, hideAfter, highlighted } = oneElement;
-      if (highlighted) {
-        return;
+      let oneElement = pickNotHighlightedElement(listOfHighlightedElements);
+      if (oneElement) {
+        const { element, hideAfter } = oneElement;
+        hideHighlight(element, hideAfter, oneElement);
       }
-
-      hideHighlight(element, hideAfter, oneElement);
     }
   }, [listOfHighlightedElements]);
 
