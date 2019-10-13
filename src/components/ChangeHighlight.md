@@ -4,6 +4,6 @@ Highlighting the changed part of children
 import ChangeHighlight from './ChangeHighlight';
 
 <ChangeHighlight>
-  <div>This is the content of the children loaded inside the ChangeHighlight</div>
+  <div ref={React.createRef()}>This is the content of the children loaded inside the ChangeHighlight</div>
 </ChangeHighlight>
 ```
