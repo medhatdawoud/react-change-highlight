@@ -22,7 +22,7 @@
     "react-dom": "^16.8"
   },
   "scripts": {
-    "start": "styleguidist server",
+    "start": "yarn build",
     "test": "echo 'pass'",
     "build": "rollup -c",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
