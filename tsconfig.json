@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./build",
+    "module": "es6",
+    // "noImplicitAny": true,
+    "outDir": "./build",
+    "target": "es5",
+    "jsx": "react"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"]
+}

@@ -2,7 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { highlightClassName } from './styles';
 import './styles';
 
-export default ({
+type Props = {
+  children: any;
+  showAfter?: number;
+  hideAfter?: number;
+  containerClassName?: string;
+  highlightStyle?: string;
+  disabled?: boolean;
+};
+
+export const ChangeHighlight: React.FC<Props> = ({
   children,
   showAfter = 500,
   hideAfter = 2500,
@@ -11,14 +20,12 @@ export default ({
   disabled = false
 }) => {
   const [oldChildren, setOldChildren] = useState();
-  const [listOfHighlightedElements, setListOfHighlightedElements] = useState([]);
+  const [listOfHighlightedElements, setListOfHighlightedElements] = useState(
+    []
+  );
   const isInitialMount = useRef(true);
 
-  const showHighlight = (
-    element,
-    showAfter = showAfter,
-    hideAfter = hideAfter
-  ) => {
+  const showHighlight = (element, showAfter, hideAfter) => {
     let classNames = element.ref.current.className;
     const isHighlighted = element.ref.current.className.includes(
       highlightStyle
@@ -36,7 +43,7 @@ export default ({
     }
   };
 
-  const hideHighlight = (element, hideAfter, oneElement) => {    
+  const hideHighlight = (element, hideAfter, oneElement) => {
     setTimeout(() => {
       let classNames = element.ref.current.className;
       if (classNames.indexOf(highlightStyle) > -1) {
