@@ -1,6 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { highlightClassName } from './styles';
-import './styles';
+
+const highlightClassName = 'react-highlight';
+
+const styles = `
+  .${highlightClassName} {
+    background-color: #f8ffb4;
+    transition: all 0.5s ease-in-out;
+  }
+`;
+
+if (document) {
+  const styleSheet = document.createElement('style');
+  styleSheet.type = 'text/css';
+  styleSheet.innerText = styles;
+  document.head.appendChild(styleSheet);
+}
 
 type Props = {
   children: any;
@@ -11,7 +25,7 @@ type Props = {
   disabled?: boolean;
 };
 
-export const ChangeHighlight: React.FC<Props> = ({
+const ChangeHighlight: React.FC<Props> = ({
   children,
   showAfter = 500,
   hideAfter = 2500,
@@ -114,3 +128,5 @@ export const ChangeHighlight: React.FC<Props> = ({
 
   return <div className={containerClassName}>{children}</div>;
 };
+
+export default ChangeHighlight;

@@ -1,3 +1,1 @@
-import { ChangeHighlight } from './components/ChangeHighlight';
-
-export default ChangeHighlight;
+export * from './components/ChangeHighlight';
