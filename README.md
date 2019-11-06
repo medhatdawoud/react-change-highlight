@@ -61,7 +61,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore -->
 <table>
   <tr>
-    <td align="center"><a href="http://medhatdawoud.net"><img src="https://avatars3.githubusercontent.com/u/337888?v=4" width="100px;" alt="Medhat Dawoud"/><br /><sub><b>Medhat Dawoud</b></sub></a><br /><a href="https://github.com/medhatdawoud/react-change-highlight/commits?author=medhatdawoud" title="Code">💻</a></td>
+    <td align="center"><a href="http://medhatdawoud.net"><img src="https://avatars3.githubusercontent.com/u/337888?v=4" width="100px;" alt="Medhat Dawoud"/><br /><sub><b>Medhat Dawoud</b></sub></a><br /><a href="https://github.com/medhatdawoud/react-change-highlight/commits?author=medhatdawoud" title="Code">💻</a> <a href="#blog-medhatdawoud" title="Blogposts">📝</a> <a href="https://github.com/medhatdawoud/react-change-highlight/commits?author=medhatdawoud" title="Documentation">📖</a></td>
   </tr>
 </table>
 
