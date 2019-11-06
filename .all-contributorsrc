@@ -1,0 +1,23 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "medhatdawoud",
+      "name": "Medhat Dawoud",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/337888?v=4",
+      "profile": "http://medhatdawoud.net",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "react-change-highlight",
+  "projectOwner": "medhatdawoud",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
