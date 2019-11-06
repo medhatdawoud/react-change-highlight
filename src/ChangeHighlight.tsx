@@ -5,6 +5,7 @@ import ShadowChild from "./ShadowChild";
 
 type Props = {
   children: React.ReactChildren;
+  containerClassName?: string;
   showAfter?: number;
   hideAfter?: number;
   highlightStyle?: string;
@@ -13,6 +14,7 @@ type Props = {
 
 const ChangeHighlight: React.FC<Props> = ({
   children,
+  containerClassName,
   showAfter = defaults.TIME_TO_HIGHLIGHT,
   hideAfter = defaults.TIME_TO_STOP_HIGHLIGHT,
   highlightStyle = defaults.HIGHLIGHT_COLOR,
@@ -32,7 +34,7 @@ const ChangeHighlight: React.FC<Props> = ({
   }, [children]);
 
   return (
-    <>
+    <div className={containerClassName}>
       {shadowDOM.map((child, index) => (
         <ShadowChild
           key={index}
@@ -43,7 +45,7 @@ const ChangeHighlight: React.FC<Props> = ({
         />
       ))}
       {children}
-    </>
+    </div>
   );
 };
 
