@@ -4,9 +4,10 @@ import ShadowChild from "./ShadowChild";
 
 type Props = {
   children: React.ReactChildren;
+  hideAfter?: number;
 };
 
-const ChangeHighlight: React.FC<Props> = ({ children }) => {
+const ChangeHighlight: React.FC<Props> = ({ children, hideAfter }) => {
   const [shadowDOM, setShadowDOM] = useState([]);
   const isInitialMount = useRef(true);
 
@@ -22,7 +23,7 @@ const ChangeHighlight: React.FC<Props> = ({ children }) => {
   return (
     <>
       {shadowDOM.map((child, index) => (
-        <ShadowChild key={index} child={child} />
+        <ShadowChild key={index} child={child} hideAfter={hideAfter} />
       ))}
       {children}
     </>
