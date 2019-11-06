@@ -6,7 +6,8 @@
     // "noImplicitAny": true,
     "outDir": "./build",
     "target": "es5",
-    "jsx": "react"
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]
