@@ -12,6 +12,12 @@ type Props = {
   disabled?: boolean;
 };
 
+const listOfClearHighlightFunctions = [];
+
+const updateClearHandler = (childId, Fn) => {
+  listOfClearHighlightFunctions[childId] = Fn;
+};
+
 const ChangeHighlight: React.FC<Props> = ({
   children,
   containerClassName,
@@ -38,10 +44,13 @@ const ChangeHighlight: React.FC<Props> = ({
       {shadowDOM.map((child, index) => (
         <ShadowChild
           key={index}
+          id={index}
           child={child}
           showAfter={showAfter}
           hideAfter={hideAfter}
           highlightStyle={highlightStyle}
+          clearHandler={listOfClearHighlightFunctions[index]}
+          updateClearHandler={updateClearHandler}
         />
       ))}
       {children}

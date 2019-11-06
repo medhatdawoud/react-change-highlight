@@ -1,16 +1,28 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import setHighlight from "./setHighlight";
 
 type Props = {
   child: any;
+  id: number;
   showAfter: number;
   hideAfter: number;
   highlightStyle: string;
+  clearHandler: number;
+  updateClearHandler: Function;
 };
 
-const ShadowChild: React.FC<Props> = ({ child, showAfter, hideAfter, highlightStyle }) => {
+const ShadowChild: React.FC<Props> = ({
+  child,
+  id,
+  showAfter,
+  hideAfter,
+  highlightStyle,
+  clearHandler,
+  updateClearHandler
+}) => {
   const initialMount = useRef(true);
-  const childrenToWatch = Array.isArray(child.props.children)
+  const [clearHighlightRef, setClearHighlightRef] = useState(clearHandler);
+  const changedChildren = Array.isArray(child.props.children)
     ? child.props.children.find(c => c.toString().trim().length)
     : child.props.children;
 
@@ -20,8 +32,18 @@ const ShadowChild: React.FC<Props> = ({ child, showAfter, hideAfter, highlightSt
       return;
     }
 
-    setHighlight(child, initialMount.current, showAfter, hideAfter, highlightStyle);
-  }, [childrenToWatch]);
+    setHighlight(
+      child,
+      id,
+      initialMount.current,
+      showAfter,
+      hideAfter,
+      highlightStyle,
+      clearHighlightRef,
+      setClearHighlightRef,
+      updateClearHandler
+    );
+  }, [changedChildren]);
 
   return <></>;
 };
