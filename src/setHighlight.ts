@@ -1,10 +1,20 @@
-const setHighlight = (ref, isInitial, hideAfter) => {
-  if (!isInitial && ref.current) {
-    const element = ref.current.style;
-    element.background = "#f8ffb4";
+const setHighlight = (
+  child: any,
+  isInitial: boolean,
+  showAfter: number,
+  hideAfter: number,
+  highlightStyle: string
+) => {
+  if (!isInitial && child.ref.current) {
+    const element = child.ref.current.style;
+
+    setTimeout(() => {
+      element.background = highlightStyle;
+    }, showAfter);
+
     setTimeout(() => {
       element.background = "#fff";
-    }, hideAfter);
+    }, showAfter + hideAfter);
   }
 };
 

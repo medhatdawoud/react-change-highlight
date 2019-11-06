@@ -3,12 +3,13 @@ import setHighlight from "./setHighlight";
 
 type Props = {
   child: any;
-  hideAfter?: number;
+  showAfter: number;
+  hideAfter: number;
+  highlightStyle: string;
 };
 
-const ShadowChild: React.FC<Props> = props => {
+const ShadowChild: React.FC<Props> = ({ child, showAfter, hideAfter, highlightStyle }) => {
   const initialMount = useRef(true);
-  const { child, hideAfter = 2000 } = props;
   const childrenToWatch = Array.isArray(child.props.children)
     ? child.props.children.find(c => c.toString().trim().length)
     : child.props.children;
@@ -19,7 +20,7 @@ const ShadowChild: React.FC<Props> = props => {
       return;
     }
 
-    setHighlight(child.ref, initialMount.current, hideAfter);
+    setHighlight(child, initialMount.current, showAfter, hideAfter, highlightStyle);
   }, [childrenToWatch]);
 
   return <></>;

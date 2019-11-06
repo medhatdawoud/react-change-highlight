@@ -17,8 +17,8 @@
     "/build"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/medhatdawoud/react-change-highlight"
+    "type": "git",
+    "url": "https://github.com/medhatdawoud/react-change-highlight"
   },
   "version": "1.1.3",
   "peerDependencies": {
