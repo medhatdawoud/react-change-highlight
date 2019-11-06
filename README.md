@@ -51,8 +51,3 @@ Default styling for highlighting in case the user didn't use a custom styling us
 |`highlightStyle`|string||className for highlighing content|
 |`disabled`|boolean|false|weather you need to disable highlighting|
 ---
-
-## Author
-- Medhat Dawoud
-- Website: [medhatdawoud.net](http://medhatdawoud.net)
-- Twitter: [@med7atdawoud](http://twitter.com/med7atdawoud)
