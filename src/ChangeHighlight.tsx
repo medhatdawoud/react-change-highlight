@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import createShadowDOM from "./createShadowDOM";
+import createShadowDOM from "./Util/createShadowDOM";
 import defaults from "./consts";
 import ShadowChild from "./ShadowChild";
+import addStyleString from "./Util/addStyleString";
 
 type Props = {
   children: React.ReactChildren;
@@ -23,11 +24,20 @@ const ChangeHighlight: React.FC<Props> = ({
   containerClassName,
   showAfter = defaults.TIME_TO_HIGHLIGHT,
   hideAfter = defaults.TIME_TO_STOP_HIGHLIGHT,
-  highlightStyle = defaults.HIGHLIGHT_COLOR,
+  highlightStyle = defaults.HIGHLIGHT_CLASS,
   disabled = false
 }) => {
   const [shadowDOM, setShadowDOM] = useState([]);
   const isInitialMount = useRef(true);
+
+  if (!!highlightStyle) {
+    addStyleString(`
+      .${defaults.HIGHLIGHT_CLASS} {
+        background: #f8ffb4 !important;
+        transition: 0.25s ease-in-out;
+      }
+    `);
+  }
 
   useEffect(() => {
     if (isInitialMount.current) {

@@ -10,18 +10,21 @@ const setHighlight = (
   updateClearHandler: Function
 ) => {
   if (!isInitial && child.ref.current) {
-    const element = child.ref.current.style;
+    const element = child.ref.current;
 
     if (clearHighlightRef) {
       clearTimeout(clearHighlightRef);
     }
 
     setTimeout(() => {
-      element.background = highlightStyle;
+      element.className += ` ${highlightStyle}`;
     }, showAfter);
 
     const clearHighlight = setTimeout(() => {
-      element.background = "#fff";
+      element.className = element.className.substr(
+        0,
+        element.className.indexOf(highlightStyle) - 1
+      );
     }, showAfter + hideAfter);
 
     setClearHighlightFn(clearHighlight);

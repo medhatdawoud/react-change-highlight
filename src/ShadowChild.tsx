@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import setHighlight from "./setHighlight";
+import setHighlight from "./Util/setHighlight";
 
 type Props = {
   child: any;
