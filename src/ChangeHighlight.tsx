@@ -25,6 +25,7 @@ const ChangeHighlight: React.FC<Props> = ({ children, hideAfter }) => {
       {shadowDOM.map((child, index) => (
         <ShadowChild key={index} child={child} hideAfter={hideAfter} />
       ))}
+      //TODO: Replace it with childrenWithRef after manipulation.
       {children}
     </>
   );

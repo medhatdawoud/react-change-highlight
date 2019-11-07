@@ -15,9 +15,10 @@ const createShadowDOM = (currentChild, pushShadowItem) => {
     setNewChild();
   }
 
+  // @Discuss: Why this is not like this? ==> const setNewChild = (pushShadowItem, validChildren) =>{} and make it in module level.
   function setNewChild() {
-    pushShadowItem(child => {
-      if (child) return [...child, currentChild];
+    pushShadowItem((validChildren: any) => {
+      if (validChildren) return [...validChildren, currentChild];
       return [currentChild];
     });
   }
