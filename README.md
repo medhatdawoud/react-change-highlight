@@ -1,6 +1,5 @@
 # react-change-highlight
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
-[![NPM](https://nodei.co/npm/react-change-highlight.png)](https://nodei.co/npm/react-change-highlight/)
 > React Change Highlight is a react component to highlight changes in the wrapped component to enhance the UX and grap the focus of the user into the changed value of some parts like the cart in an e-commerce application for example.
 
 This is a real use case we are using in our company
