@@ -32,23 +32,23 @@ const ChangeHighlight: React.FC<Props> = ({
   const [shadowDOM, setShadowDOM] = useState([]);
   const isInitialMount = useRef(true);
 
-  if (!!highlightStyle) {
-    addStyleString(
-      `
-      .${defaults.HIGHLIGHT_CLASS} {
-        background: #f8ffb4 !important;
-        transition: 0.25s ease-in-out;
-      }
-    `,
-      ssr
-    );
-  }
-
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    }
     if (!disabled) {
+      if (isInitialMount.current) {
+        if (!!highlightStyle) {
+          addStyleString(
+            `
+          .${defaults.HIGHLIGHT_CLASS} {
+            background: #f8ffb4 !important;
+            transition: 0.25s ease-in-out;
+          }
+        `,
+            ssr
+          );
+        }
+        isInitialMount.current = false;
+      }
+
       setShadowDOM([]);
       createShadowDOM({ props: { children } }, setShadowDOM);
     }

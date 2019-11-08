@@ -2,8 +2,7 @@ const addStyleString = (str: string, isSSR = false) => {
   // do nothing in case of SSR
   if (!document || isSSR) {
     console.warn(
-      `"react-change-highlight", As you're using server-side rendering, it's a must to create and 
-      pass your css class to the highlightStyle attribute for "HighlightChange" component `
+      `"react-change-highlight", As you're using server-side rendering, it's a must to create and pass your css class to the highlightStyle attribute for "ChangeHighlight" component.`
     );
     return;
   }

@@ -23,9 +23,9 @@ npm install react-change-highlight
 
 ## Usage
 
-Basically you need to wrap the components you want to highlight on change inside `HighlightChange` element then add `ref` attribute to each child in this component to be used to be highlighted.
+Basically you need to wrap the components you want to highlight on change inside `ChangeHighlight` element (default import) then add `ref` attribute to each child in this component which you want to highlight when they got their content changed.
 
-In the following example the `count` variable comes from state, so when ever that function `setCount()` is called with any different value the background of that wrapped div will be changed
+In the following example the `count` variable comes from state, so when ever that function `setCount()` is called with any different value the background of that wrapped div will be changed as a default action, but actually it can be any kind of animation you make into the class you will pass to `highlightStyle` attribute.
 
 ```jsx
 import ChangeHighlight from "react-change-highlight";
@@ -41,10 +41,10 @@ export default () => {
 };
 ```
 
-Default styling for highlighting in case the user didn't use a custom styling using the `highlightStyle` property:
+Default styling for highlighting in case the user didn't use a custom styling using the `highlightStyle` property is `rc-highlight` class and it is as follow:
 
 ```css
-.react-highlight {
+.rc-highlight {
   background-color: #f8ffb4;
   transition: all 0.5s ease-in-out;
 }
@@ -52,7 +52,11 @@ Default styling for highlighting in case the user didn't use a custom styling us
 
 ## SSR (server-side rendering)
 
-In case of using this module in a server-side rengering app, you should make sure to create and pass your own className to the `highlightStyle` attribute, and to make some hint for you, add `ssr` attribute to the `HighlightChange` element, so it can give you a hint to add a class in your console as a warning.
+In case of using this module in a server-side rengering app, you should make sure to create and pass your own className to the `highlightStyle` attribute, and to make some hint for you, add `ssr` attribute to the `ChangeHighlight` element, so it can give you a hint to add a class in your console as a warning like this.
+
+```text
+⚠️ "react-change-highlight", As you're using server-side rendering, it's a must to create and pass your css class to the highlightStyle attribute for "ChangeHighlight" component
+```
 
 ## Props
 
