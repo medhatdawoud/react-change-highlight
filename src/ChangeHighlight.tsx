@@ -4,14 +4,15 @@ import defaults from "./consts";
 import ShadowChild from "./ShadowChild";
 import addStyleString from "./Util/addStyleString";
 
-type Props = {
+interface Props {
   children: React.ReactChildren;
   containerClassName?: string;
   showAfter?: number;
   hideAfter?: number;
   highlightStyle?: string;
   disabled?: boolean;
-};
+  ssr?: boolean;
+}
 
 const listOfClearHighlightFunctions = [];
 
@@ -25,18 +26,22 @@ const ChangeHighlight: React.FC<Props> = ({
   showAfter = defaults.TIME_TO_HIGHLIGHT,
   hideAfter = defaults.TIME_TO_STOP_HIGHLIGHT,
   highlightStyle = defaults.HIGHLIGHT_CLASS,
-  disabled = false
+  disabled = false,
+  ssr = false
 }) => {
   const [shadowDOM, setShadowDOM] = useState([]);
   const isInitialMount = useRef(true);
 
   if (!!highlightStyle) {
-    addStyleString(`
+    addStyleString(
+      `
       .${defaults.HIGHLIGHT_CLASS} {
         background: #f8ffb4 !important;
         transition: 0.25s ease-in-out;
       }
-    `);
+    `,
+      ssr
+    );
   }
 
   useEffect(() => {
