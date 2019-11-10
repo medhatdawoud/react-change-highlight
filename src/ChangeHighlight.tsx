@@ -31,6 +31,7 @@ const ChangeHighlight: React.FC<Props> = ({
 }) => {
   const [shadowDOM, setShadowDOM] = useState([]);
   const isInitialMount = useRef(true);
+  const uniqueId = Math.floor(Math.random() * 100000)+1;
 
   useEffect(() => {
     if (!disabled) {
@@ -66,6 +67,7 @@ const ChangeHighlight: React.FC<Props> = ({
           highlightStyle={highlightStyle}
           clearHandler={listOfClearHighlightFunctions[index]}
           updateClearHandler={updateClearHandler}
+          uniqueId={uniqueId}
         />
       ))}
       {children}

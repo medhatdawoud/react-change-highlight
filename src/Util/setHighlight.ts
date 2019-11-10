@@ -7,10 +7,13 @@ const setHighlight = (
   highlightStyle: string,
   clearHighlightRef: number,
   setClearHighlightFn: Function,
-  updateClearHandler: Function
+  updateClearHandler: Function,
+  uniqueId: number
 ) => {
-  if (!isInitial && child.ref.current) {
-    const element = child.ref.current;
+
+  const element = child.ref.current;
+
+  if (!isInitial && element && element.getAttribute('react-change-hightlight-uniqueId') == uniqueId) {
 
     if (clearHighlightRef) {
       clearTimeout(clearHighlightRef);
