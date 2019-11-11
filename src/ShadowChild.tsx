@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import setHighlight from "./Util/setHighlight";
+import defaults from "./consts";
 
 type Props = {
   child: any;
@@ -29,7 +30,7 @@ const ShadowChild: React.FC<Props> = ({
     : child.props.children;
 
   const elementDOM = child.ref.current;
-  elementDOM.setAttribute('react-change-hightlight-uniqueId',uniqueId);
+  elementDOM.setAttribute(defaults.HIGHLIGHT_UNIQUEID,uniqueId);
 
   useEffect(() => {
     if (initialMount.current) {

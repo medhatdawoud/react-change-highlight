@@ -1,3 +1,5 @@
+import defaults from "../consts"
+
 const setHighlight = (
   child: any,
   id: number,
@@ -12,8 +14,8 @@ const setHighlight = (
 ) => {
 
   const element = child.ref.current;
-
-  if (!isInitial && element && element.getAttribute('react-change-hightlight-uniqueId') == uniqueId) {
+  
+  if (!isInitial && element && parseInt(element.getAttribute(defaults.HIGHLIGHT_UNIQUEID)) === uniqueId) {
 
     if (clearHighlightRef) {
       clearTimeout(clearHighlightRef);

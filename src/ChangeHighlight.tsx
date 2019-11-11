@@ -31,11 +31,12 @@ const ChangeHighlight: React.FC<Props> = ({
 }) => {
   const [shadowDOM, setShadowDOM] = useState([]);
   const isInitialMount = useRef(true);
-  const uniqueId = Math.floor(Math.random() * 100000)+1;
+  const [uniqueId, setUniqueId] = useState(0);
 
   useEffect(() => {
     if (!disabled) {
       if (isInitialMount.current) {
+        setUniqueId(Math.floor(Math.random() * 100000)+1);
         if (!!highlightStyle) {
           addStyleString(
             `
