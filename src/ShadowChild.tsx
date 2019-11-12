@@ -30,7 +30,7 @@ const ShadowChild: React.FC<Props> = ({
     : child.props.children;
 
   const elementDOM = child.ref.current;
-  elementDOM.setAttribute(defaults.HIGHLIGHT_UNIQUEID,uniqueId);
+  elementDOM.setAttribute(defaults.HIGHLIGHT_UNIQUE_ID,uniqueId);
 
   useEffect(() => {
     if (initialMount.current) {
