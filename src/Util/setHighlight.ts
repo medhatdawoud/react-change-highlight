@@ -1,3 +1,5 @@
+import defaults from "../consts"
+
 const setHighlight = (
   child: any,
   id: number,
@@ -7,10 +9,13 @@ const setHighlight = (
   highlightStyle: string,
   clearHighlightRef: number,
   setClearHighlightFn: Function,
-  updateClearHandler: Function
+  updateClearHandler: Function,
+  uniqueId: number
 ) => {
-  if (!isInitial && child.ref.current) {
-    const element = child.ref.current;
+
+  const element = child.ref.current;
+
+  if (!isInitial && element && parseInt(element.getAttribute(defaults.HIGHLIGHT_UNIQUE_ID)) === uniqueId) {
 
     if (clearHighlightRef) {
       clearTimeout(clearHighlightRef);

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import setHighlight from "./Util/setHighlight";
+import defaults from "./consts";
 
 type Props = {
   child: any;
@@ -9,6 +10,7 @@ type Props = {
   highlightStyle: string;
   clearHandler: number;
   updateClearHandler: Function;
+  uniqueId: number;
 };
 
 const ShadowChild: React.FC<Props> = ({
@@ -18,13 +20,17 @@ const ShadowChild: React.FC<Props> = ({
   hideAfter,
   highlightStyle,
   clearHandler,
-  updateClearHandler
+  updateClearHandler,
+  uniqueId
 }) => {
   const initialMount = useRef(true);
   const [clearHighlightRef, setClearHighlightRef] = useState(clearHandler);
   const changedChildren = Array.isArray(child.props.children)
     ? child.props.children.find(c => c.toString().trim().length)
     : child.props.children;
+
+  const elementDOM = child.ref.current;
+  elementDOM.setAttribute(defaults.HIGHLIGHT_UNIQUE_ID,uniqueId);
 
   useEffect(() => {
     if (initialMount.current) {
@@ -41,7 +47,8 @@ const ShadowChild: React.FC<Props> = ({
       highlightStyle,
       clearHighlightRef,
       setClearHighlightRef,
-      updateClearHandler
+      updateClearHandler,
+      uniqueId
     );
   }, [changedChildren]);
 
