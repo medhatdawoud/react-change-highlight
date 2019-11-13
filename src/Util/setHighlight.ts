@@ -10,12 +10,12 @@ const setHighlight = (
   clearHighlightRef: number,
   setClearHighlightFn: Function,
   updateClearHandler: Function,
-  uniqueId: number
+  uniqueId: string
 ) => {
 
   const element = child.ref.current;
 
-  if (!isInitial && element && parseInt(element.getAttribute(defaults.HIGHLIGHT_UNIQUE_ID)) === uniqueId) {
+  if (!isInitial && element && element.getAttribute(defaults.HIGHLIGHT_UNIQUE_ID) === uniqueId) {
 
     if (clearHighlightRef) {
       clearTimeout(clearHighlightRef);
