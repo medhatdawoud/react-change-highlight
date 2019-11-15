@@ -15,7 +15,7 @@ const setHighlight = (
 
   const element = child.ref.current;
 
-  if (!isInitial && element && element.getAttribute(defaults.HIGHLIGHT_UNIQUE_ID) === uniqueId) {
+  if (!isInitial && element?.getAttribute(defaults.HIGHLIGHT_UNIQUE_ID) === uniqueId) {
 
     if (clearHighlightRef) {
       clearTimeout(clearHighlightRef);

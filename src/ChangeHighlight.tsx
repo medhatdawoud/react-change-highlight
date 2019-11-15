@@ -3,7 +3,7 @@ import createShadowDOM from "./Util/createShadowDOM";
 import defaults from "./consts";
 import ShadowChild from "./ShadowChild";
 import addStyleString from "./Util/addStyleString";
-import generateUUID from "./Util/generateUUID";
+import getUUID from "./Util/getUUID";
 
 
 interface Props {
@@ -38,7 +38,7 @@ const ChangeHighlight: React.FC<Props> = ({
   useEffect(() => {
     if (!disabled) {
       if (isInitialMount.current) {
-        setUniqueId(generateUUID());
+        setUniqueId(getUUID());
         if (!!highlightStyle) {
           addStyleString(
             `
