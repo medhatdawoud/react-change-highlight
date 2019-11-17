@@ -6,6 +6,8 @@ labels: ''
 assignees: ''
 
 ---
+**Which version?**
+write the version you used to reproduce this issue
 
 **Describe the bug**
 A clear and concise description of what the bug is.
