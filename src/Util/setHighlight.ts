@@ -12,6 +12,7 @@ const setHighlight = (
   updateClearHandler: Function,
   uniqueId: number
 ) => {
+  if (!child.ref) return;
 
   const element = child.ref.current;
 
