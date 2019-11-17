@@ -10,7 +10,7 @@ type Props = {
   highlightStyle: string;
   clearHandler: number;
   updateClearHandler: Function;
-  uniqueId: number;
+  uniqueId: string;
 };
 
 const ShadowChild: React.FC<Props> = ({
