@@ -24,6 +24,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mohamedGamalAbuGalala",
+      "name": "Mohamed Gamal",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/14947957?v=4",
+      "profile": "https://www.linkedin.com/in/mohamedabugalala/",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
