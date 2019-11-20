@@ -1,6 +1,8 @@
 import React from "react";
 
 const createShadowDOM = (currentChild, setShadowItemFn) => {
+  if (!currentChild) return;
+
   const children = currentChild.props.children;
 
   if (Array.isArray(children)) {

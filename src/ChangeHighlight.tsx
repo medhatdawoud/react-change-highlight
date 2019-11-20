@@ -7,7 +7,7 @@ import getUUID from "./Util/getUUID";
 
 
 interface Props {
-  children: React.ReactChildren | Element;
+  children: any;
   containerClassName?: string;
   showAfter?: number;
   hideAfter?: number;
