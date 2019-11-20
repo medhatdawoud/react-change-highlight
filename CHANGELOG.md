@@ -1,5 +1,8 @@
 ## CHANGE LOG
 
+### v1.2.2 (20 Nov 2019)
+- Fix issue with elements with no ref.
+
 ### v1.2.1 (13 Nov 2019)
 - Small patch to fix problem of 2 nested `ChangeHighlight` elements inside each other.
 

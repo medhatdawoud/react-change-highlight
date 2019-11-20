@@ -22,8 +22,8 @@
   },
   "version": "1.2.1",
   "peerDependencies": {
-    "react": "^16.8",
-    "react-dom": "^16.8"
+    "react": ">= 16.8",
+    "react-dom": ">= 16.8"
   },
   "scripts": {
     "start": "yarn build",
