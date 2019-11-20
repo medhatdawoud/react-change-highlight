@@ -2,6 +2,8 @@ import React from "react";
 
 const createShadowDOM = (currentChild, setShadowItemFn) => {
   const children = currentChild.props.children;
+  if (!children) setNewChild();
+
   if (Array.isArray(children)) {
     React.Children.forEach(children, child => {
       if (typeof child === "object") createShadowDOM(child, setShadowItemFn);
