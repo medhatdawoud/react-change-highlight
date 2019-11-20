@@ -2,7 +2,6 @@ import React from "react";
 
 const createShadowDOM = (currentChild, setShadowItemFn) => {
   const children = currentChild.props.children;
-  if (!children) setNewChild();
 
   if (Array.isArray(children)) {
     React.Children.forEach(children, child => {
@@ -13,7 +12,7 @@ const createShadowDOM = (currentChild, setShadowItemFn) => {
     });
   } else if (typeof children === "object") {
     createShadowDOM(children, setShadowItemFn);
-  } else if (children.toString().trim().length) {
+  } else if (children?.toString().trim().length) {
     setNewChild();
   }
 
