@@ -5,7 +5,7 @@
 [![npm version](https://img.shields.io/npm/v/react-change-highlight.svg?style=flat)](https://www.npmjs.com/package/react-change-highlight)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/medhatdawoud/react-change-highlight/blob/master/CONTRIBUTING.md)
 
-> React Change Highlight is a react component to highlight changes in the wrapped component to enhance the UX and grap the focus of the user into the changed value of some parts like the cart in an e-commerce application for example.
+> React Change Highlight is a react component to highlight changes in the wrapped component to enhance the UX and grab the focus of the user into the changed value of some parts like the cart in an e-commerce application for example.
 
 This is a real use case we are using in our company
 ![UseCase](https://i.imgur.com/vHxyHrN.gif)
@@ -55,7 +55,7 @@ Default styling for highlighting in case the user didn't use a custom styling us
 
 ## SSR (server-side rendering)
 
-In case of using this module in a server-side rengering app, you should make sure to create and pass your own className to the `highlightStyle` attribute, and to make some hint for you, add `ssr` attribute to the `ChangeHighlight` element, so it can give you a hint to add a class in your console as a warning like this.
+In case of using this module in a server-side rendering app, you should make sure to create and pass your own className to the `highlightStyle` attribute, and to make some hint for you, add `ssr` attribute to the `ChangeHighlight` element, so it can give you a hint to add a class in your console as a warning like this.
 
 ```text
 ⚠️ "react-change-highlight", As you're using server-side rendering, it's a must to create and pass your css class to the highlightStyle attribute for "ChangeHighlight" component
@@ -69,7 +69,7 @@ In case of using this module in a server-side rengering app, you should make sur
 | `hideAfter`          | number  | 2500    | number of milli seconds before ending highlighting                                                    |
 | `containerClassName` | string  |         | className for component container                                                                     |
 | `highlightStyle`     | string  |         | className for highlighing content (a must in case of SSR)                                             |
-| `disabled`           | boolean | false   | weather you need to disable highlighting                                                              |
+| `disabled`           | boolean | false   | whether you need to disable highlighting                                                              |
 | `ssr`                | boolean | false   | you need to pass this in case of using it with server-side rendering. (gives a hint for adding style) |
 
 ---
