@@ -1,4 +1,4 @@
-import defaults from "../consts"
+import defaults from "../consts";
 
 const setHighlight = (
   child: any,
@@ -17,7 +17,6 @@ const setHighlight = (
   const element = child.ref.current;
 
   if (!isInitial && element?.getAttribute(defaults.HIGHLIGHT_UNIQUE_ID) === uniqueId) {
-
     if (clearHighlightRef) {
       clearTimeout(clearHighlightRef);
     }
