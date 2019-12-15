@@ -5,7 +5,6 @@ import ShadowChild from "./ShadowChild";
 import addStyleString from "./Util/addStyleString";
 import getUUID from "./Util/getUUID";
 
-
 interface Props {
   children: any;
   containerClassName?: string;

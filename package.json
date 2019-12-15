@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "yarn build",
-    "lint": "eslint packages/*/src/*.{ts,tsx}",
+    "lint": "eslint ./src/*.{ts,tsx}",
     "test": "echo 'pass'",
     "build": "rollup -c",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
@@ -39,7 +39,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": ""
+      "pre-commit": "yarn lint"
     }
   },
   "devDependencies": {
