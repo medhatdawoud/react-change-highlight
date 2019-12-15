@@ -12,6 +12,9 @@
     "highlight",
     "change-highlight"
   ],
+  "workspaces": [
+    "packages/*"
+  ],
   "main": "build/index.js",
   "files": [
     "/build"
@@ -27,7 +30,7 @@
   },
   "scripts": {
     "start": "yarn build",
-    "lint": "eslint ./src/**/*",
+    "lint": "eslint packages/*/src/*.{ts,tsx}",
     "test": "echo 'pass'",
     "build": "rollup -c",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
@@ -36,7 +39,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint"
+      "pre-commit": ""
     }
   },
   "devDependencies": {
