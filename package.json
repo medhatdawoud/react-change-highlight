@@ -27,11 +27,17 @@
   },
   "scripts": {
     "start": "yarn build",
+    "lint": "eslint ./src/**/*",
     "test": "echo 'pass'",
     "build": "rollup -c",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "prepublishOnly": "rm -rf build && npm run build",
     "release": "np --no-release-draft"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -39,11 +45,16 @@
     "@babel/preset-react": "^7.0.0",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
+    "eslint": "^5.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.1.1",
     "np": "5.1.0",
+    "prettier": "^1.19.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-styleguidist": "^9.1.16",
@@ -56,5 +67,8 @@
     "rollup-plugin-uglify": "^6.0.3",
     "typescript": "^3.7.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "husky": "^3.1.0"
+  }
 }

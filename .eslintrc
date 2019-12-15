@@ -1,5 +1,8 @@
 // Your ESLint configuration
 {
+  "env": {
+    "browser": true
+  },
   "extends": ["plugin:prettier/recommended", "eslint:recommended", "plugin:react/recommended"],
   "plugins": ["react-hooks"],
   "rules": {
@@ -10,6 +13,14 @@
   "settings": {
     "react": {
       "version": "detect"
+    }
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
     }
   }
 }
