@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "yarn build",
-    "lint": "eslint ./src/*.{ts,tsx}",
+    "lint": "eslint ./packages/**/*.{ts,tsx}",
     "test": "echo 'pass'",
     "build": "rollup -c",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
