@@ -1,5 +1,6 @@
 {
   "name": "react-change-highlight",
+  "private": true,
   "description": "React component to highlight the changed content immediately and bring focus of the user into the changed part",
   "author": {
     "name": "Medhat Dawoud",
@@ -29,10 +30,11 @@
     "react-dom": ">=16.8"
   },
   "scripts": {
-    "start": "yarn build",
-    "lint": "eslint ./packages/**/*.{ts,tsx}",
-    "test": "echo 'pass'",
+    "start": "yarn build:packages",
+    "lint": "eslint packages/**/*.{ts,tsx}",
+    "test": "jest packages/**/*.spec.js",
     "build": "rollup -c",
+    "build:packages": "lerna run build",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "prepublishOnly": "rm -rf build && npm run build",
     "release": "np --no-release-draft"
@@ -57,6 +59,8 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.1.1",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "lerna": "^3.19.0",
     "np": "5.1.0",
     "prettier": "^1.19.1",
     "react": "^16.10.1",
