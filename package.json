@@ -1,46 +1,21 @@
 {
-  "name": "react-change-highlight",
-  "description": "React component to highlight the changed content immediately and bring focus of the user into the changed part",
-  "author": {
-    "name": "Medhat Dawoud",
-    "email": "medhatdawoud@gmail.com"
-  },
-  "keywords": [
-    "ux",
-    "react-highlight",
-    "react-change",
-    "highlight",
-    "change-highlight"
-  ],
+  "private": true,
+  "author": "Medhat Dawoud <medhatdawoud@gmail.com>",
+  "license": "ISC",
   "workspaces": [
     "packages/*"
   ],
-  "main": "build/index.js",
   "files": [
     "/build"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/medhatdawoud/react-change-highlight"
-  },
-  "version": "1.2.3",
-  "peerDependencies": {
-    "react": ">=16.8",
-    "react-dom": ">=16.8"
-  },
   "scripts": {
-    "start": "yarn build",
-    "lint": "eslint ./src/*.{ts,tsx}",
-    "test": "echo 'pass'",
-    "build": "rollup -c",
+    "clean": "lerna clean",
+    "lint": "eslint packages/**/*.{ts,tsx}",
+    "test": "jest packages/**/*.spec.js",
+    "build:packages": "lerna run build --scope 'react-change-*'",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "prepublishOnly": "rm -rf build && npm run build",
     "release": "np --no-release-draft"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint"
-    }
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -57,10 +32,10 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.1.1",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "lerna": "^3.19.0",
     "np": "5.1.0",
     "prettier": "^1.19.1",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
     "react-styleguidist": "^9.1.16",
     "rollup": "^1.22.0",
     "rollup-plugin-babel": "^4.3.3",
@@ -71,5 +46,9 @@
     "rollup-plugin-uglify": "^6.0.3",
     "typescript": "^3.7.2"
   },
-  "license": "MIT"
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  }
 }
