@@ -3,16 +3,15 @@
   "author": "Medhat Dawoud <medhatdawoud@gmail.com>",
   "license": "ISC",
   "workspaces": [
-    "packages/*"
-  ],
-  "files": [
-    "/build"
+    "packages/*",
+    "examples/*"
   ],
   "scripts": {
     "clean": "lerna clean",
     "lint": "eslint packages/**/*.{ts,tsx}",
     "test": "jest packages/**/*.spec.js",
     "build:packages": "lerna run build --scope 'react-change-*'",
+    "build:examples": "lerna run build --scope '*-example'",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "prepublishOnly": "rm -rf build && npm run build",
     "release": "np --no-release-draft"
@@ -26,7 +25,7 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
-    "eslint": "^5.0.0",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.14.3",
@@ -44,7 +43,8 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-typescript2": "^0.24.3",
     "rollup-plugin-uglify": "^6.0.3",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "webpack-dev-server": "3.9.0"
   },
   "husky": {
     "hooks": {

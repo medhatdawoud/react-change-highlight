@@ -1,0 +1,1 @@
+### Simple Example of using react-change-highlight

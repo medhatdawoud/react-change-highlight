@@ -1,4 +1,4 @@
 {
   "presets": ["@babel/preset-env", "@babel/preset-react"],
-  "plugins": [["module-resolver", { "root": ["./src"] }]]
+  "plugins": [["module-resolver", { "root": ["./packages/reactt-change-highlight/src"] }]]
 }
