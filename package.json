@@ -1,36 +1,15 @@
 {
-  "name": "react-change-highlight",
   "private": true,
-  "description": "React component to highlight the changed content immediately and bring focus of the user into the changed part",
-  "author": {
-    "name": "Medhat Dawoud",
-    "email": "medhatdawoud@gmail.com"
-  },
-  "keywords": [
-    "ux",
-    "react-highlight",
-    "react-change",
-    "highlight",
-    "change-highlight"
-  ],
+  "author": "Medhat Dawoud <medhatdawoud@gmail.com>",
+  "license": "ISC",
   "workspaces": [
     "packages/*"
   ],
-  "main": "build/index.js",
   "files": [
     "/build"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/medhatdawoud/react-change-highlight"
-  },
-  "version": "1.2.3",
-  "peerDependencies": {
-    "react": ">=16.8",
-    "react-dom": ">=16.8"
-  },
   "scripts": {
-    "start": "yarn build:packages",
+    "clean": "lerna clean",
     "lint": "eslint packages/**/*.{ts,tsx}",
     "test": "jest packages/**/*.spec.js",
     "build:packages": "lerna run build --scope 'react-change-*'",
@@ -38,12 +17,6 @@
     "prepublishOnly": "rm -rf build && npm run build",
     "release": "np --no-release-draft"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint"
-    }
-  },
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
@@ -72,5 +45,10 @@
     "rollup-plugin-typescript2": "^0.24.3",
     "rollup-plugin-uglify": "^6.0.3",
     "typescript": "^3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   }
 }

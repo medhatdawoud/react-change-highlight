@@ -1,12 +1,28 @@
 {
   "name": "react-change-highlight",
   "version": "1.2.3",
-  "description": "",
+  "description": "React component to highlight the changed content immediately and bring focus of the user into the changed part",
+  "keywords": [
+    "ux",
+    "react",
+    "react-highlight",
+    "react-change",
+    "highlight",
+    "change-highlight"
+  ],
+  "author": "Medhat Dawoud <medhatdawoud@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medhatdawoud/react-change-highlight",
+    "directory": "packages/react-change-highlight"
+  },
   "main": "../../build/index.js",
   "scripts": {
     "build": "rollup -c"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "peerDependencies": {
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
+  }
 }
