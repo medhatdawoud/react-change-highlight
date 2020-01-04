@@ -1,0 +1,12 @@
+{
+  "name": "react-change-highlight",
+  "version": "1.2.3",
+  "description": "",
+  "main": "../../build/index.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

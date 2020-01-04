@@ -33,8 +33,7 @@
     "start": "yarn build:packages",
     "lint": "eslint packages/**/*.{ts,tsx}",
     "test": "jest packages/**/*.spec.js",
-    "build": "rollup -c",
-    "build:packages": "lerna run build",
+    "build:packages": "lerna run build --scope 'react-change-*'",
     "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "prepublishOnly": "rm -rf build && npm run build",
     "release": "np --no-release-draft"
@@ -44,6 +43,7 @@
       "pre-commit": "yarn lint"
     }
   },
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
@@ -63,8 +63,6 @@
     "lerna": "^3.19.0",
     "np": "5.1.0",
     "prettier": "^1.19.1",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
     "react-styleguidist": "^9.1.16",
     "rollup": "^1.22.0",
     "rollup-plugin-babel": "^4.3.3",
@@ -74,6 +72,5 @@
     "rollup-plugin-typescript2": "^0.24.3",
     "rollup-plugin-uglify": "^6.0.3",
     "typescript": "^3.7.2"
-  },
-  "license": "MIT"
+  }
 }
