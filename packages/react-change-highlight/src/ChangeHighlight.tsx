@@ -55,7 +55,7 @@ const ChangeHighlight: React.FC<Props> = ({
       setShadowDOM([]);
       createShadowDOM({ props: { children } }, setShadowDOM);
     }
-  }, [children]);
+  }, [children, disabled, ssr, highlightStyle]);
 
   return (
     <div className={containerClassName}>
