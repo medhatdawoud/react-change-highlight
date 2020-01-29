@@ -7,8 +7,9 @@ type Props = {
   id: number;
   showAfter: number;
   hideAfter: number;
-  highlightStyle: string;
+  highlightClassName: string;
   clearHandler: number;
+  newlyAddedOnly: boolean;
   updateClearHandler: Function;
   uniqueId: string;
 };
@@ -18,8 +19,9 @@ const ShadowChild: React.FC<Props> = ({
   id,
   showAfter,
   hideAfter,
-  highlightStyle,
+  highlightClassName,
   clearHandler,
+  newlyAddedOnly,
   updateClearHandler,
   uniqueId
 }) => {
@@ -35,7 +37,7 @@ const ShadowChild: React.FC<Props> = ({
   }
 
   useEffect(() => {
-    if (initialMount?.current) {
+    if (!newlyAddedOnly && initialMount?.current) {
       initialMount.current = false;
       return;
     }
@@ -43,15 +45,18 @@ const ShadowChild: React.FC<Props> = ({
     setHighlight(
       child,
       id,
+      newlyAddedOnly,
       initialMount.current,
       showAfter,
       hideAfter,
-      highlightStyle,
+      highlightClassName,
       clearHighlightRef,
       setClearHighlightRef,
       updateClearHandler,
       uniqueId
     );
+
+    initialMount.current = false;
   }, [changedChildren]);
 
   return <></>;

@@ -10,7 +10,8 @@ interface Props {
   containerClassName?: string;
   showAfter?: number;
   hideAfter?: number;
-  highlightStyle?: string;
+  highlightClassName?: string;
+  mode?: "newOnly" | "change";
   disabled?: boolean;
   ssr?: boolean;
 }
@@ -26,7 +27,8 @@ const ChangeHighlight: React.FC<Props> = ({
   containerClassName,
   showAfter = defaults.TIME_TO_HIGHLIGHT,
   hideAfter = defaults.TIME_TO_STOP_HIGHLIGHT,
-  highlightStyle = defaults.HIGHLIGHT_CLASS,
+  highlightClassName = defaults.HIGHLIGHT_CLASS,
+  mode = "change",
   disabled = false,
   ssr = false
 }) => {
@@ -38,7 +40,7 @@ const ChangeHighlight: React.FC<Props> = ({
     if (!disabled) {
       if (isInitialMount.current) {
         setUniqueId(getUUID());
-        if (!!highlightStyle) {
+        if (!!highlightClassName) {
           addStyleString(
             `
           .${defaults.HIGHLIGHT_CLASS} {
@@ -55,7 +57,7 @@ const ChangeHighlight: React.FC<Props> = ({
       setShadowDOM([]);
       createShadowDOM({ props: { children } }, setShadowDOM);
     }
-  }, [children, disabled, ssr, highlightStyle]);
+  }, [children, disabled, ssr, highlightClassName]);
 
   return (
     <div className={containerClassName}>
@@ -64,9 +66,10 @@ const ChangeHighlight: React.FC<Props> = ({
           key={index}
           id={index}
           child={child}
+          newlyAddedOnly={mode === "newOnly"}
           showAfter={showAfter}
           hideAfter={hideAfter}
-          highlightStyle={highlightStyle}
+          highlightClassName={highlightClassName}
           clearHandler={listOfClearHighlightFunctions[index]}
           updateClearHandler={updateClearHandler}
           uniqueId={uniqueId}

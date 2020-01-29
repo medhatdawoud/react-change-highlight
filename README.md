@@ -7,10 +7,10 @@
 
 > React Change Highlight is a react component to highlight changes in the wrapped component to enhance the UX and grab the focus of the user into the changed value of some parts like the cart in an e-commerce application for example.
 
-This is a real use case we are using in our company
+This is a real use case I'm using in a project
 ![UseCase](https://i.imgur.com/vHxyHrN.gif)
 
-You can play around with it on this sandbox [codesandbox.io/react-change-highlight](https://codesandbox.io/s/react-change-highlight-example-fcwh9)
+You can play around with it on this sandbox [codesandbox.io/react-change-highlight](https://codesandbox.io/s/react-change-highlight-example-fcwh9) .. or clone the repo and play around with the all examples in the examples folder
 
 ## Install
 
@@ -63,14 +63,15 @@ In case of using this module in a server-side rendering app, you should make sur
 
 ## Props
 
-| Property             | Type    | Default | Description                                                                                           |
-| -------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------- |
-| `showAfter`          | number  | 500     | number of milli seconds before start highlighting                                                     |
-| `hideAfter`          | number  | 2500    | number of milli seconds before ending highlighting                                                    |
-| `containerClassName` | string  |         | className for component container                                                                     |
-| `highlightStyle`     | string  |         | className for highlighing content (a must in case of SSR)                                             |
-| `disabled`           | boolean | false   | whether you need to disable highlighting                                                              |
+| Property             | Type    | Default | Descriptio|
+| -------------------- | ------- | ------- | --------------------------------------------------------- |
+| `showAfter`          | number  | 500     | number of milli seconds before start highlighting|
+| `hideAfter`          | number  | 2500    | number of milli seconds before ending highlighting|
+| `mode`     | change or newOnly  |`change`| mode of the detection, either `change` which is the default one to detect the changes in the parsed elements or `newOnly` which is useful in case of newly added element highlight (check todo example) |
+| `disabled`           | boolean | false   | whether you need to disable highlighting |
 | `ssr`                | boolean | false   | you need to pass this in case of using it with server-side rendering. (gives a hint for adding style) |
+| `highlightClassName` | string  |         | className for highlighing content (a must in case of SSR)|
+| `containerClassName` | string  |         | className for component container |
 
 ---
 
