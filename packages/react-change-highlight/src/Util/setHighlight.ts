@@ -3,6 +3,7 @@ import defaults from "../consts";
 const setHighlight = (
   child: any,
   id: number,
+  newlyAddedOnly: boolean,
   isInitial: boolean,
   showAfter: number,
   hideAfter: number,
@@ -16,7 +17,10 @@ const setHighlight = (
 
   const element = child.ref.current;
 
-  if (!isInitial && element?.getAttribute(defaults.HIGHLIGHT_UNIQUE_ID) === uniqueId) {
+  if (
+    (newlyAddedOnly ? isInitial : !isInitial) &&
+    element?.getAttribute(defaults.HIGHLIGHT_UNIQUE_ID) === uniqueId
+  ) {
     if (clearHighlightRef) {
       clearTimeout(clearHighlightRef);
     }
