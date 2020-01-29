@@ -24,9 +24,9 @@ function App() {
       />
       <button onClick={handleAddTodo}>Add</button>
       <br />
-      <HighlightChange>
+      <HighlightChange highlightStyle="highlight" mode="newOnly">
         {listOfTodos.map((todo, idx) => (
-          <div key={todo + idx} style={{ paddingTop: "10px" }} ref={React.createRef()}>
+          <div key={todo + idx} style={{ padding: "10px 0" }} ref={React.createRef()}>
             <input type="checkbox" />
             {todo}
           </div>
