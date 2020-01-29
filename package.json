@@ -12,9 +12,8 @@
     "test": "jest packages/**/*.spec.js",
     "build:packages": "lerna run build --scope 'react-change-*'",
     "build:examples": "lerna run build --scope '*-example'",
-    "postbuild": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
-    "prepublishOnly": "rm -rf build && npm run build",
-    "release": "np --no-release-draft"
+    "bump": "lerna version -m 'Bump' --no-git-tag-version --no-push",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -33,7 +32,6 @@
     "husky": "^3.1.0",
     "jest": "^25.1.0",
     "lerna": "^3.19.0",
-    "np": "5.2.1",
     "prettier": "^1.19.1",
     "react-styleguidist": "^9.1.16",
     "rollup": "^1.22.0",
