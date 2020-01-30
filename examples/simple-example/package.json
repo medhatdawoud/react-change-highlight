@@ -1,6 +1,5 @@
 {
-  "name": "simple-example",
-  "version": "1.3.0",
+  "name": "@react-change-highlight/simple-example",
   "private": true,
   "dependencies": {
     "react": "^16.12.0",

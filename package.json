@@ -13,7 +13,7 @@
     "build:packages": "lerna run build --scope 'react-change-*'",
     "build:examples": "lerna run build --scope '*-example'",
     "bump": "lerna version -m 'Bump' --no-git-tag-version --no-push",
-    "publish": "lerna publish"
+    "deploy": "lerna publish"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
