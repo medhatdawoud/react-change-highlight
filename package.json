@@ -42,7 +42,7 @@
     "rollup-plugin-typescript2": "^0.24.3",
     "rollup-plugin-uglify": "^6.0.3",
     "typescript": "^3.7.2",
-    "webpack-dev-server": "3.9.0"
+    "webpack-dev-server": "3.10.2"
   },
   "husky": {
     "hooks": {
