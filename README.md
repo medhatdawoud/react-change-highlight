@@ -72,23 +72,3 @@ In case of using this module in a server-side rendering app, you should make sur
 | `ssr`                | boolean | false   | you need to pass this in case of using it with server-side rendering. (gives a hint for adding style) |
 | `highlightClassName` | string  |         | className for highlighing content (a must in case of SSR)|
 | `containerClassName` | string  |         | className for component container |
-
----
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-<table>
-  <tr>
-    <td align="center"><a href="http://medhatdawoud.net"><img src="https://avatars3.githubusercontent.com/u/337888?v=4" width="100px;" alt="Medhat Dawoud"/><br /><sub><b>Medhat Dawoud</b></sub></a><br /><a href="https://github.com/medhatdawoud/react-change-highlight/commits?author=medhatdawoud" title="Code">💻</a> <a href="#blog-medhatdawoud" title="Blogposts">📝</a> <a href="https://github.com/medhatdawoud/react-change-highlight/commits?author=medhatdawoud" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/EslamHiko"><img src="https://avatars1.githubusercontent.com/u/18349358?v=4" width="100px;" alt="Islam ElHakmi"/><br /><sub><b>Islam ElHakmi</b></sub></a><br /><a href="https://github.com/medhatdawoud/react-change-highlight/commits?author=EslamHiko" title="Code">💻</a></td>
-    <td align="center"><a href="https://www.linkedin.com/in/mohamedabugalala/"><img src="https://avatars2.githubusercontent.com/u/14947957?v=4" width="100px;" alt="Mohamed Gamal"/><br /><sub><b>Mohamed Gamal</b></sub></a><br /><a href="https://github.com/medhatdawoud/react-change-highlight/issues?q=author%3AmohamedGamalAbuGalala" title="Bug reports">🐛</a> <a href="https://github.com/medhatdawoud/react-change-highlight/commits?author=mohamedGamalAbuGalala" title="Code">💻</a></td>
-  </tr>
-</table>
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
