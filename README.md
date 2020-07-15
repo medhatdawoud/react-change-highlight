@@ -1,13 +1,12 @@
-<div style="text-align:center">
-<h1>React change highlight</h1>
+<h1 align="center">React change highlight</h1>
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg)](#contributors)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/medhatdawoud/react-change-highlight/blob/master/LICENSE) 
-[![npm version](https://img.shields.io/npm/v/react-change-highlight.svg?style=flat)](https://www.npmjs.com/package/react-change-highlight)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/medhatdawoud/react-change-highlight/blob/master/CONTRIBUTING.md)
-</div>
+<p align="center">
+  <a href="https://github.com/medhatdawoud/react-change-highlight/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg">
+  <a href="https://www.npmjs.com/package/react-change-highlight"><img src="https://img.shields.io/npm/v/react-change-highlight.svg?style=flat"></a>
+  <a href="https://github.com/medhatdawoud/react-change-highlight/blob/master/CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
+</p>
 
-> React Change Highlight is a react component to highlight changes in the wrapped component to enhance the UX and grab the focus of the user into the changed value of some parts like the cart in an e-commerce application for example.
+React Change Highlight is a react component to highlight changes in the wrapped component to enhance the UX and grab the focus of the user into the changed value of some parts like the cart in an e-commerce application for example.
 
 This is a real use case I'm using in a project
 ![UseCase](https://i.imgur.com/vHxyHrN.gif)
