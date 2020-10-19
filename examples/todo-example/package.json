@@ -1,5 +1,5 @@
 {
-  "name": "@react-change-highlight/todo-example",
+  "name": "todo-example",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.5.0",
