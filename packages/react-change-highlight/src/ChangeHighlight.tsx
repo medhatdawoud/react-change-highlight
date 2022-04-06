@@ -14,6 +14,7 @@ interface Props {
   mode?: "newOnly" | "change";
   disabled?: boolean;
   ssr?: boolean;
+  color?: string;
 }
 
 const listOfClearHighlightFunctions = [];
@@ -30,7 +31,8 @@ const ChangeHighlight: React.FC<Props> = ({
   highlightClassName = defaults.HIGHLIGHT_CLASS,
   mode = "change",
   disabled = false,
-  ssr = false
+  ssr = false,
+  color = "#f8ffb4"
 }) => {
   const [shadowDOM, setShadowDOM] = useState([]);
   const isInitialMount = useRef(true);
@@ -44,7 +46,7 @@ const ChangeHighlight: React.FC<Props> = ({
           addStyleString(
             `
           .${defaults.HIGHLIGHT_CLASS} {
-            background: #f8ffb4 !important;
+            background: ${color} !important;
             transition: 0.25s ease-in-out;
           }
         `,
